@@ -1,0 +1,310 @@
+#PHP编码规范
+##开发约束以及约束设定
+1. error_reporting级别设定为 E_ALL (PHP配置文件中), 代码中禁止出现 error_reporting 的设定, 包括 E_NOTICE 级别的错误都应该纠正过来。
+
+2. 代码中禁止出现 @ 符号屏蔽错误的情况发生, 此符号不利于出错调试, 因为会屏蔽关键信息。
+
+3. 文件一律保存为不带BOM的utf-8的编码格式。
+
+4. 每行不多于80个字符，每行一句代码，采用Unix换行符，必须在编辑器中进行强制设定。
+
+##缩进
+缩进统一采用4空格为一个缩进单位, 每个开发人员必须在编辑器中进行强制设定.
+
+## 行尾的空格以及tab
+
+空行以及语句行尾, 禁止出现空格,tab字符
+
+##逗号,分号,冒号
+上述符号(逗号,分号,冒号)前面紧跟内容没有空格, 非行尾的符号后要有一个空格, 行尾禁止出现空格,tab字符
+
+##引号
+尽量使用单引号
+
+双引号中的变量, 必须使用{}括起来, 无论是直接变量还是带元素或者属性的引用变量
+
+## 大括号{}、if和switch
+
+首括号与关键词同行，尾括号与关键字同列
+
+正确示例:
+
+    class Person {
+    }
+
+    function demo() {
+    }
+
+    if(true) {
+    }
+
+if结构中，else和elseif与前后两个大括号同行，左右各一个空格。另外，即便if后只有一行语句，仍然需要加入大括号，以保证结构清晰
+
+正确示例:
+
+    if(true) {
+    } else {
+    }
+
+    if($onelineOutput == true) {
+        print('One line');
+    }
+    
+switch 匹配条件时,所有操作均为一行,允许采用 ” case: 操作; break; ” 的单行方式写入 , 否则,分行写入,且break关键字要与操作保持同等缩进.为保持代码一致,如果switch中使用了default 关键词, 也必须采用 break 将其关闭.
+
+正确示例:
+
+    switch($name) {
+        case 'cat':
+            $type = 'animal';
+            break;
+        case 'sunflower':
+            $type = 'plant';
+            break;
+        default:
+            $type = 'God Knows';
+            break;
+    }
+
+    switch($name) {
+        case 'cat': $type = 'animal'; break;
+        case 'sunflower': $type = 'plant'; break;
+        default: $type = 'God Knows'; break;
+    }
+    
+##运算符、小括号、空格、关键词和函数
+每个运算符与两边参与运算的值或表达式中间要有一个空格, 特例:是字符连接运算符号两边不加空格, 函数参数的默认值设定=号两边不加空格
+
+正确示例:
+
+    $result = (($a + 1) * 3 / 2 + $num)).'Test';
+    
+    $condition ? $result1 : $result2;
+    
+    function hello($name='xxx') {
+    }
+    
+左括号“(” 应和函数,关键词紧贴在一起，除此以外应当使用空格将“(”同前面内容分开
+
+正确示例:
+
+    function demo() {
+    }
+    
+    if(true) {
+    }
+    
+右括号“)”除后面是“)”或者“.”以外，其他一律用空格隔开它们
+
+正确示例:
+
+    if(count(array(11, 22))) {
+        $result = (($a + 1) * 3 / 2 + $num)).'Test';
+    }
+除字符串中特意需要，一般情况下，在程序以及HTML中不出现两个连续的空格
+
+任何情况下，PHP程序中不能出现空白的带有TAB或空格的行(多数编辑器具有自动去除行尾空格的功能,在习惯/工具不足的情况下可以开启)
+
+每段较大的程序体，上、下应当加入空白行，两个程序块之间只使用1个空行，禁止使用多行.少于15行的程序块,可不加上下空白行.
+
+正确示例:
+
+    if($flag) {
+    
+        //超过15行的的代码
+    
+    }
+    if($flag) {
+        //少于15行的的代码
+    }
+    
+代码中可见的内容如字符串,注释中如中文,数字,英文单词混杂, 应当在数字或者英文单词的前后加入空格.
+正确示例:
+
+    echo '无法找到控制器 DefaultController 对应的文件';
+
+##数组
+
+数组定义时, 3个以及3个以上带元素名的元素的数组, 每个元素必须分行写, 同时元素相对 array 定义行, 做一个单位的缩进, array 函数的闭合括号), 须与 array 所在行启始位置保持同列
+
+元素定义时, => 符号左右各提供一个空格.
+
+正确示例:
+
+    $arr = array('name', 'age', 'hometown');
+    $arr = array(
+        'name' => 'xiaoming',
+        'age' => 28,
+        'hometown' => 'Zhejiang',
+    );
+
+##函数定义
+
+参数的名字和变量的命名规范一致
+
+函数定义中的左小括号,与函数名紧挨,中间无需空格
+
+具有默认值的参数应该位于参数列表的后面
+
+开始的左大括号与函数定义为同一行, 中间加一个空格, 不要另起一行
+
+函数参数的默认值设定=号两边不加空格
+
+正确示例:
+
+    function hashPassword($password, $code='Ntlsd2xz') {
+        if($flag) {
+            //do something
+        }
+    }
+
+##函数的返回
+
+函数的返回值应尽量保持一致, 如通常需要返回数组的, 当无数据返回时应当返回空的array(), 除非需要表明操作本身出错的, 才返回false
+
+##变量,类以及函数的命名方式
+
+此方式适用变量,类名,函数名, 但不适用于常量
+
+以标准计算机英文为蓝本, 杜绝一切拼音或拼音英文混杂的命名方式
+
+函数/变量的首字母应当小写, 类名的首字母应当大写
+
+多个单词的分割,使用驼峰法命名,局部变量(如一个函数内部)或者类的私有方法名允许使用 _ 开始.
+
+变量命名只能使用项目中有据可查的英文缩写方式，例如可以使用$data而不可使用$data1、$data2这样容易产生混淆的形式，应当使用$threaddata、$postdata这样一目了然容易理解的形式；
+
+可以合理的对过长的命名进行缩写，例如$bio($biography)，$tpp($threadsPerPage)，前提是英文中有这样既有的缩写形式，或字母符合英文缩写规范
+
+必须清楚所使用英文单词的词性，在权限相关的范围内，大多使用$allow***或$is***的形式，前者后面接动词，后者后面接形容词。
+
+##常量
+
+常量应该总是使用大写字母命名, 少数殊情况下, 可使用 _ 分隔单词
+
+##变量、对象、函数名
+
+PHP内建值 true, false, null 必须全部使用小写
+
+##文件命名
+
+以ThinkPHP的命名为标准
+
+##注释
+
+文件,类,方法上方都需要有块注释,以 /** 开头, */ 结尾.每行以 * 开头, 描述一类内容, 最后一行需要添加 created: 日期 来描述文件/类/方法的创建日期
+
+示例:
+    
+    /**
+     *
+     */
+
+内容的字段以 @ 开始,比如作者,参数等,各类字段注释如下
+
+    @copyright 版权所属,因为是公司项目,所以请标注Noez Work, Inc
+    @author 作者
+    @created 写入日期
+    @version 版本号
+    @see 参见: 可以指向一个方法,表示关联
+    @link 参考网址
+    @param 对方法的说明 对方法中某参数的说明
+    @var 类属性描述
+    @return 函数返回值
+    @throws 该方法会抛出何种异常
+    @deprecated 表示废弃了该方法
+    @example 示例, 如何使用该方法
+    
+各类标注的具体实例:
+
+文件注释
+
+    /**
+     * 这个文件做什么的
+     *
+     * @author xwsoul
+     * @version 5.1
+     * @copyright Noez Work, Inc
+     * @created: 2012-09-04
+     */
+
+类注释
+
+    /**
+     * 这个类做什么的
+     *
+     * @author xwsoul
+     * @version 5.1
+     * @created: 2012-09-04
+     */
+
+方法/函数注释
+
+
+    /**
+     * 这个函数/方法做什么的
+     *
+     * @author xwsoul
+     * @param int
+     * @param string
+     * @param array 一个人的其他选项,如家庭
+     * @return Person
+     * @throws 会抛出的异常
+     * @created: 2012-09-04
+     */
+    function initPerson($age, $name, $otherParams) {
+    }
+
+@param 和 @return 可以返回的类型即使预定义类型, 如int , float, string 也可以自定义的类
+
+@param 是和参数一一对应的, 有多少个参数就有多少个@param标签, 当你的变量名足以说明用途的时候, 类型后面的说明就是可选的
+
+##特殊的状态描述标签
+
+    TODO: 标识处有功能代码待编写
+    FIXME: 代码需要修正,甚至是代码错误,无法工作(即将发布的代码是不允许出现此标注的)
+    XXX: 代码可以勉强工作, 但是有待优化, 希望将来可以改进
+特殊标识使用示例:
+
+    
+    /**
+     * 这个函数/方法做什么的
+     * XXX: $otherParams 可以采用引用传参提高代码性能
+     *
+     * @author xwsoul
+     * @param int
+     * @param string
+     * @param array 一个人的其他选项,如家庭
+     * @return Person
+     * @throws 会抛出的异常
+     */
+    function initPerson($age, $name, $otherParams) {
+    }
+
+代码修改,调试注释
+
+如果修改了代码中的逻辑/实现 需要在修改开始和结束处分别标注修改, 以便原作者可以方便的知道其代码的变化.
+
+注释实例:
+
+    /**
+     * 这个函数/方法做什么的
+     * XXX: $otherParams 可以采用引用传参提高代码性能
+     *
+     * @author xwsoul
+     * @param int
+     * @param string
+     * @param array 一个人的其他选项,如家庭
+     * @return Person
+     * @throws 会抛出的异常
+     */
+    function initPerson($age, $name, $otherParams) {
+        //原有的代码
+        /* add by yourname */
+        //新的逻辑实现
+        /* add by yourname */
+        //原有的代码
+    }
+    
+    
+    

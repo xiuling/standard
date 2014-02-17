@@ -1,0 +1,48 @@
+#HTML规范
+##HTML标记
+一律使用小写字母
+
+所有标签必须闭合
+
+所有HTML标记参数赋值需使用双引号包含
+
+示例
+
+    <input type=”text” name=”test” value=”ok” />
+    
+##编码
+使用utf-8编码。
+
+    <meta charset="utf-8">
+    
+##html、css、javascript三层分离
+
+尽可能保持结构（html结构标签）、描述（css）、行为（javascript）的分离，并且让他们尽可能少的交互。确保html文档内容只有html的结构，将css和javascript以资源的方式引入，并省略type。
+
+    <link rel=”stylesheet” href=”…” />
+    <style>…</style>
+    <script src=”…”></script>
+
+非特殊情况下样式文件必须外链至<head>…</head>之间;非特殊情况下JavaScript文件必须外链至页面底部;
+
+引入JS库文件, 文件名须包含库名称及版本号及是否为压缩版, 比如jquery-1.4.1.min.js; 引入插件, 文件名格式为库名称+插件名称, 比如jQuery.cookie.js;
+ 
+ 必须为含有描述性表单元素(input, textarea)添加label, 如
+ 
+    <p>姓名: <input type=”text” id=”name” name=”name” /></p> 
+    须写成:   
+    <p><label for=”name”>姓名: </label><input type=”text” id=”name” /></p>
+  
+
+#CSS规范
+即使最后一项，也不可缺少;
+
+属性值前增加个空格
+
+1行只有一个css属性，二个规则间有一个空行
+
+编码为utf-8
+
+分块组织，并使用注释说明：它包括了什么，它的目的是什么，为什么优先使用它。
+
+养成写TODO的习惯，特别是在项目中，记录下一些要改，但来不及修改的地方，或指派其他同事做修改。

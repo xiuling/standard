@@ -1,0 +1,29 @@
+#MySQL规范
+##数据表和字段
+表和字段的名称必须是易于理解，能表达表的功能的英文单词或缩写英文单词
+
+以标准计算机英文为蓝本, 杜绝一切拼音或拼音英文混杂的命名方式
+
+数据表和字段采用小写加下划线方式命名，并注意字段名不要以下划线开头，例如 think_user 表和 user_name字段，类似 _username 这样的数据表字段可能会被过滤。
+
+表名称不应该取得太长（一般不超过三个英文单词）。
+
+在命名表时，用单数形式表示名称。例如，使用 employee，而不是 employees。
+
+表和字段都要写注释信息
+
+主键为id
+##SQL语句
+SQL关键词大写（SELECT，INSERT，ALTER，DELETE，TABLE，COUNT，MAX，FROM，WHERE，AS，ON，ORDER BY，DESC，GROUP BY，LIMIT等），按照逻辑分行。
+
+示例：
+
+    SELECT field AS something, field2, field3
+    FROM table a, table b
+    WHERE (this=that) AND (this2=that2)
+    
+##查询
+尽可能不要使用SELECT *， 而应该查询需要用到的指定的几个字段
+
+有时做两次或多次数据库查询比对两个或多个大表进行联合查询更好
+
